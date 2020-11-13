@@ -1,0 +1,139 @@
+:root {
+  --container-background: #1e2423;
+  --main-color: #32e0c4;
+}
+
+%flex-complete-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main-button {
+  background-color: var(--main-color);
+}
+
+.app-component {
+  @extend %flex-complete-center;
+  height: 100%;
+}
+
+.start-page,
+.create-wallet-page,
+.verify-mnemonic-page,
+.create-password-page,
+.wallet-created-page {
+  @extend %flex-complete-center;
+  height: 100%;
+  width: 100%;
+
+  >.container {
+    @extend %flex-complete-center;
+    height: 300px;
+    width: 500px;
+    max-width: 95%;
+    border-radius: 5px;
+    background-color: var(--container-background);
+    color: #ffffff;
+    border-color: #141816;
+    box-shadow: 0 0.75rem 1.5rem rgba(20, 24, 22, .5);
+  }
+}
+
+.start-page {
+  .button-container {
+    margin-top: 20px;
+
+    .main-button {
+      margin-right: 15px;
+    }
+
+    .secondary-button {
+      background-color: #d3d3d3;
+    }
+  }
+}
+
+.create-wallet-page, .verify-mnemonic-page, .create-password-page {
+
+  h1 {
+    color: #ffffff;
+    margin-bottom: 5px;
+  }
+
+  .container {
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 400px;
+    height: auto;
+    width: 600px;
+  }
+
+  .container p {
+    color: #ff5959;
+    margin-bottom: 15px;
+
+    svg {
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+  }
+
+  .mnemonic-phrase-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #272e2d;
+    border-radius: 5px;
+    padding: 15px 10px;
+    box-sizing: border-box;
+    position: relative;
+    padding-bottom: 40px;
+
+    .mnemonic-word {
+      background-color: #fff;
+      padding: 0.3rem 0.5rem 0.5rem;
+      margin: 0.5rem 0.35rem;
+      color: #000;
+      line-height: 1;
+      border-radius: 5px;
+
+      span {
+        color: #757575;
+        margin-right: 5px;
+      }
+    }
+
+    .copy-mnemonic-phrase {
+      @extend %flex-complete-center;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 30px;
+      width: 30px;
+      padding: 5px;
+      cursor: pointer;
+    }
+  }
+
+  .checkbox-container {
+    margin: 15px 0;
+    width: 100%;
+
+    input {
+      margin-right: 10px;
+    }
+  }
+}
+
+.verify-mnemonic-page, .create-password-page {
+  .container {
+    min-height: 300px;
+  }
+}
+
+.verify-mnemonic-page {
+  .invalid-words {
+    width: 100%;
+  }
+}

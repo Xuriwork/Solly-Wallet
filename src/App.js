@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-function App() {
+import './App.scss';
+
+import { WalletProvider } from './utils/wallet';
+import { ConnectionProvider } from './utils/connection';
+
+import CreateWalletPage from './pages/CreateWallet';
+import RestoreWalletPage from './pages/RestoreWallet';
+import StartPage from './pages/StartPage';
+import VerifyMnemonicPage from './pages/VerifyMnemonicPage';
+import CreatePasswordPage from './pages/CreatePasswordPage';
+import WalletCreatedPage from './pages/WalletCreatedPage';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConnectionProvider>
+      <WalletProvider>
+        <Router>
+          <div className='app-component'>
+              <Route exact path='/' component={StartPage} />
+              <Route path='/create-wallet/mnemonic' component={CreateWalletPage} />
+              <Route path='/create-wallet/verify' component={VerifyMnemonicPage} />
+              <Route path='/create-wallet/create-password' component={CreatePasswordPage} />
+              <Route path='/create-wallet/wallet-created' component={WalletCreatedPage} />
+              <Route path='/restore-wallet' component={RestoreWalletPage} />
+          </div>
+        </Router>
+      </WalletProvider>
+    </ConnectionProvider>
   );
 }
 
